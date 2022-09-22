@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <% if @book.errors.any? %>
-        <h3><%= @book.errors.count%>件のエラーじゃもん</h3>
+        <h3><%= @book.errors.count %>error</h3>
         <ul>
           <% @book.errors.full_messages.each do |message| %>
           <li>
