@@ -1,2 +1,10 @@
-@import "~bootstrap/scss/bootstrap"; 
+@import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.btn-unlike {
+  color: #007bff;
+}
+
+.btn-like {
+  color: red;
+}
