@@ -26,7 +26,7 @@ class User < ApplicationRecord
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
+  #フォロー機能
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -37,6 +37,14 @@ class User < ApplicationRecord
 
   def following?(user)
     followings.include?(user)
+  end
+  #検索機能
+  def self.looks(search, word)
+    if word == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif word == "foward_match"
+      @user = User.where("name LIKE?", "#{word}")
+    end
   end
 
 end
