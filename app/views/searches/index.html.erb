@@ -1,0 +1,50 @@
+
+<h2><%= @range %> search for "<%= @word %>"</h2>
+  <% if @range == "User" %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Introduce</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= image_tag user.get_profile_image(80, 80) %>
+              <% end %>
+            </td>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.introduction %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td>
+              <%= link_to book_path(book) do %>
+                <%= image_tag book.user.get_profile_image(80, 80) %>
+              <% end %>
+            </td>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
