@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <% users.each local: false do |users| %>
+    <% users.each do |users| %>
       <tr>
         <td><%= image_tag users.get_profile_image(50, 50) %></td>
         <td><%= users.name %></td>
