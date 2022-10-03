@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
+    @posts = Book.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
   end
 
   def create
