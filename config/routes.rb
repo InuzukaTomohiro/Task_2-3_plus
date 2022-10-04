@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
   resources :searches, only: [:index]
   devise_for :users
-  resources :rooms, only: [:cretae, :show]
+  resources :rooms, only: [:create, :show]
   resources :chats, only: [:create]
-  
+
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :book_comments, only: [:create, :destroy]

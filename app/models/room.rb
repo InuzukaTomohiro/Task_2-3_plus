@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
 
-  has_many :users, through: :contacts, dependent: :destroy
-  has_many :chats, dependent: :destroy
+ has_many :contacts
+ has_many :users, through: :contacts
+ has_many :chats
 
 end
