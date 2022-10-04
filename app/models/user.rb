@@ -19,9 +19,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  has_many :room_users
- has_many :rooms, through: :room_users
- has_many :messages
+  has_many :contacts
+  has_many :rooms, through: :contacts
+  has_many :chats
 
 
   def get_profile_image(width, height)
