@@ -1,9 +1,13 @@
 class GroupsController < ApplicationController
 
   def new
+    @group = Group.new
   end
 
   def index
+    @groups = Group.all
+
+    @book = Book.new
   end
 
   def show
@@ -13,6 +17,7 @@ class GroupsController < ApplicationController
   end
 
   def create
+
   end
 
   def update
@@ -22,7 +27,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, :introduce)
+    params.require(:group).permit(:name, :introduce, :group_image)
   end
 
 end
