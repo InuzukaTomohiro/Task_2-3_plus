@@ -4,8 +4,11 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    unless BookView.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.book_views.create(book_id: @book.id)
+    end
     @book_comment = BookComment.new
-    impressionist(@book, nil, unique: [:ip_address])
+
   end
 
   def index
