@@ -25,6 +25,9 @@ class User < ApplicationRecord
 
   has_many :book_views, dependent: :destroy
 
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+
 
   def get_profile_image(width, height)
     unless profile_image.attached?
