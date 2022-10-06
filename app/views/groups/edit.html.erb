@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h2>Editing Group</h2>
+      <%= form_with model: @group do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "グループ名" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :introduce, "紹介文" %>
+          <%= f.text_area :introduce, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :group_image %>
+          <%= f.file_field :group_image, class: "form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update Group", class: "btn btn-md btn-info" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
