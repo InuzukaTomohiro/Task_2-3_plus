@@ -8,13 +8,14 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
-
+    @group = Group.new
     @book = Book.new
   end
 
   def show
     @book = Book.new
     @group = Group.find(params[:id])
+    @group_update = Group.new
   end
 
   def edit
@@ -22,17 +23,23 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(group_params)
-    group.owner_id = current_user.id
-    group.save
-    redirect_to "/groups"
+    @group = Group.new(group_params)
+    @group.owner_id = current_user.id
+    if @group.save
+        redirect_to "/groups"
+    else
+      render :new
+    end
 
   end
 
   def update
-    group = Group.find(params[:id])
-    group.update(group_params)
-    redirect_to "/groups"
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+        redirect_to "/groups"
+    else
+      render :edit
+    end
   end
 
 

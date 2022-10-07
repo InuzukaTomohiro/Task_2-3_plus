@@ -1,25 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
+      <%= render 'layouts/errors', book: @group %>
       <h2>Create Group</h2>
-      <div >
-        <%= form_with model: @group do |f| %>
-        <div class="form-group">
-          <%= f.label :name, "グループ名" %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :introduce, "紹介文" %>
-          <%= f.text_area :introduce, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :group_image, "グループ画像" %>
-          <%= f.file_field :gropu_image, class: "form-control-file" %>
-        </div>
-        <div>
-          <%= f.submit "Create Group", class: "btn btn-md btn-info" %>
-        </div>
-        <% end %>
+      <div>
+        <%= render "form", group: @group %>
       </div>
     </div>
   </div>

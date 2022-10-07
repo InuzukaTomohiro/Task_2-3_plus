@@ -2,6 +2,9 @@ class Group < ApplicationRecord
 
   has_one_attached :group_image
 
+  validates :name, presence: :true
+  validates :introduce, presence: :true
+
   def get_group_image(width, height)
     unless group_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -10,6 +13,5 @@ class Group < ApplicationRecord
       group_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  has_many :groups, dependent: :destroy
-  has_many :users, through: :groups
+  has_many :group_users, dependent: :destroy
 end
