@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+   before_action :ensure_correct_user, only: [:edit,:update]
+
 
   def new
     @group = Group.new
@@ -38,6 +40,13 @@ class GroupsController < ApplicationController
   private
   def group_params
     params.require(:group).permit(:name, :introduce, :group_image)
+  end
+
+  def ensure_correct_user
+    group = Group.find(params[:id])
+    unless group.owner_id == current_user.id
+      redirect_to "/groups"
+    end
   end
 
 end

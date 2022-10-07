@@ -15,7 +15,11 @@
             <th><%= image_tag @group.get_group_image(50, 50) %></th>
             <th><%= @group.name %></th>
             <th><%= @group.introduce %></th>
-            <th><%= link_to "Edit", edit_group_path(@group), class: "btn btn-sm btn-success" %></th>
+            <th>
+              <% if @group.owner_id == current_user.id %>
+                <%= link_to "Edit", edit_group_path(@group), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </th>
           </tr>
         </thead>
         <tbody>
