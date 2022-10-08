@@ -1,5 +1,4 @@
 <div class='container px-5 px-sm-0'>
-  <%= render 'layouts/errors', book: @book %>
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
@@ -9,35 +8,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Groups</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>グループ名</th>
-            <th>紹介文</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @groups.each do |groups| %>
-          <tr>
-            <td><%= image_tag groups.get_group_image(50,50) %></td>
-            <td>
-              <%= link_to group_path(groups) do %>
-                <%= groups.name %>
-              <% end %>
-            </td>
-            <td><%= groups.introduce %></td>
-            <td>
-              <% if groups.owner_id == current_user.id %>
-                <%= link_to "Edit", edit_group_path(groups), class: "btn btn-sm btn-success" %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'index', groups: @groups %>
     </div>
   </div>
 </div>
-
